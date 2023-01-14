@@ -20,6 +20,7 @@ export default function HeroSection () {
     const nevigate = useNavigate()
 
     useEffect( () => {
+        
         if(isUserLoggedIn && isSubscribed){
             setButtonData({
                 buttonText : 'Get Started' ,
@@ -44,6 +45,7 @@ export default function HeroSection () {
         }
         // else scroll to pricing section
         alert('Scroll to Pricing section')
+        //  add login to scroll t the pricing section 
 
     }
 

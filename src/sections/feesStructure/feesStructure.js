@@ -16,7 +16,6 @@ export default function FeesStructure (){
         const {
             planSubscribed
         } = userData?.subscriptionDetail || {}
-        console.log(35345345,planSubscribed)
         if(isUserLoggedIn && planSubscribed){
             setPlanSubscribed(planSubscribed)
         }

@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Header({isButtonVisible = true}) {
 
     const [isShowingMenu, setIsShowingMenu] = useState(false)
+
     const nevbarOptions = [
         { name: 'About', path: '/aboutPage' ,isPage : true },
         { name: 'Program', path: '#programsection' , isPage : false},
@@ -42,7 +43,7 @@ export default function Header({isButtonVisible = true}) {
                        {option.isPage ?  <Link to={option.path} className={styles.link}>
                             {option.name}
                         </Link> :
-                        <a href={option.path}>
+                        <a href={option.path} style = {{textDecoration : 'none',color:'black'}}>
                             {option.name}
                         </a>}
                     </li>
@@ -88,7 +89,7 @@ export default function Header({isButtonVisible = true}) {
 
             </header>
 
-            {/* { isShowingMenu && <GetMobileNavOptions/>  } */}
+            { isShowingMenu && <GetMobileNavOptions/>  }
 
         </Fragment>
 

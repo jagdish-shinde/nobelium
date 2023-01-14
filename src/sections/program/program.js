@@ -8,8 +8,6 @@ export default function ProgramSec () {
 
 
     function GetTrainerCard ({data}) {
-        // console.log(data)
-      
         
         return(
             <div className={style.card}>
@@ -81,7 +79,6 @@ export default function ProgramSec () {
             <div className={style.wrapper}>
 
             <div className={style.scrollContainer}  id = "slider">
-
                 {
                     programData.map((data,index) => (
                         <GetTrainerCard 

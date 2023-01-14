@@ -10,6 +10,7 @@ export default function About () {
 
     return(
         <section className={style.wrapper}>
+
             <div className={style.leftSec}>
                 <ReactPlayer 
                     url='https://youtu.be/X4ypAoU_T6c' 
@@ -19,6 +20,7 @@ export default function About () {
                     // className={style.video}
                 />
             </div>
+            
             <div className={style.rightSec}>
                 <h3 className={style.heading}>About Us</h3>
                 <p className={style.aboutUsText}>

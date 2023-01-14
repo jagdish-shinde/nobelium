@@ -16,10 +16,7 @@ function MainPage() {
       <HeroSection/>
       <About/>
       <WhyUs/>
-      <div id="programsection" >
-
       <ProgramSec />
-      </div>
       {/* <Trainer/> */}
       <FeesStructure/>
       <Footer/>

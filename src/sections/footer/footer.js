@@ -32,7 +32,7 @@ export default function Footer(){
 
             {
                 pageLInks.map(({ icon,url},index )=> (
-                    <a href = {url} target = '_blank' >
+                    <a href = {url} target = '_blank' key={index} >
                         <p className = {style.icon}>
                             {icon}
                         </p> 

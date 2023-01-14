@@ -12,14 +12,7 @@ import { useNavigate } from 'react-router-dom';
 export default function FeesCard ({plan}) {
 
     const nevigate = useNavigate()
-    const data = [
-        'No Contract',
-        'No Contract',
-        'No Contract',
-        'No Contract',
-        'No Contract',
-        'No Contract',
-    ]
+    
     const {
         passType = '',
         price = '',
