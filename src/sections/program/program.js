@@ -1,51 +1,114 @@
+import { Fragment, useRef, useState } from 'react'
 import style from './progrm.module.css'
-import ProgramCard from '../../components/programCard/programCard'
-import yogaPic from '../../../src/images/yoga.png'
-import muscle from '../../../src/images/muscle.png'
-import runingBoy from '../../../src/images/runingBoy.png'
-
+import { BsFillArrowRightCircleFill , BsFillArrowLeftCircleFill} from "react-icons/bs";
 
 
 export default function ProgramSec () {
 
-    const dummyLoremText = `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s`
 
-    const cardData = [
+
+    function GetTrainerCard ({data}) {
+        // console.log(data)
+      
+        
+        return(
+            <div className={style.card}>
+                <div className={style.imageWrapper}> 
+                    <img 
+                        width='100%'
+                        height='100%'
+                        alt='fgf'
+                        src={data.programPic}
+                    />
+                </div>
+                <p className={style.programName}>{data.progamName}</p>
+            </div>
+        )
+    }
+
+
+    function handleClickLeftArrow () {
+        const slider = document.getElementById('slider')
+        slider.scrollLeft = slider.scrollLeft + 300
+        
+    }
+    function handleClickRightArrow () {
+        const slider = document.getElementById('slider')
+        slider.scrollLeft = slider.scrollLeft - 300
+    }
+
+    const programData = [
         {
-            pic : runingBoy,
-            cardHead : 'Cardio and Strength',
-            programInfo : dummyLoremText
+            programPic : 'https://images.pexels.com/photos/3094215/pexels-photo-3094215.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            progamName : 'Yoga'
         },
         {
-            pic : muscle,
-            cardHead : 'Muscle Building',
-            programInfo : dummyLoremText
+            programPic : 'https://images.pexels.com/photos/1638324/pexels-photo-1638324.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            progamName : 'Body Building'
         },
         {
-            pic : yogaPic,
-            cardHead : 'Stretch and Yoga',
-            programInfo : dummyLoremText
+            programPic : 'https://images.pexels.com/photos/6455784/pexels-photo-6455784.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            progamName : 'Aeobic'
         },
+        {
+            programPic : 'https://images.pexels.com/photos/3820441/pexels-photo-3820441.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            progamName : 'Flexibility'
+        },
+        {
+            programPic : 'https://images.pexels.com/photos/3094215/pexels-photo-3094215.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            progamName : 'Yoga'
+        },
+        {
+            programPic : 'https://images.pexels.com/photos/1638324/pexels-photo-1638324.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            progamName : 'Body Building'
+        },
+        {
+            programPic : 'https://images.pexels.com/photos/6455784/pexels-photo-6455784.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            progamName : 'Aeobic'
+        },
+        {
+            programPic : 'https://images.pexels.com/photos/3820441/pexels-photo-3820441.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            progamName : 'Flexibility'
+        },
+        
     ]
-    return(
-        <section className={style.sectionWrapper}>
-            <h2 className={style.primaryHeading}>Program we runs</h2>
-            <h6 className={style.secondaryHeading}>Build your body best</h6>
+
+
+    return (
+        <section id = 'programsection'>
+            <h3 className={style.primaryHeading}> Training progrm </h3>
+            <h4 className={style.secondaryHeading}> To train you like professionals</h4>
             <div className={style.wrapper}>
 
+            <div className={style.scrollContainer}  id = "slider">
+
                 {
-                    cardData.map((cardData , index) => (
-                        <ProgramCard 
+                    programData.map((data,index) => (
+                        <GetTrainerCard 
+                            data = {data}
                             key = {index}
-                            cardData = {cardData}
                         />
                     ))
                 }
-        
             </div>
 
+                <BsFillArrowRightCircleFill 
+                    style={{fontSize : '2rem'}} 
+                    onClick = {handleClickRightArrow}
+                    className={style.rightArrow}
+                    />
+                <BsFillArrowLeftCircleFill 
+                    style={{fontSize : '2rem'}} 
+                    onClick = {handleClickLeftArrow}
+                    className={style.leftArrow}
+                    />
+
+            </div>
+
+               
+               
+
         </section>
-     
+      
     )
 }

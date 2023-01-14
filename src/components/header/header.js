@@ -4,67 +4,93 @@ import { GoListUnordered } from "react-icons/go";
 import { Fragment, useState } from 'react';
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import Button from '../button/button';
+import { useNavigate } from 'react-router-dom';
 
 
-export default function Header () {
-    const [isShowingMenu , setIsShowingMenu] = useState(false)
+export default function Header({isButtonVisible = true}) {
+
+    const [isShowingMenu, setIsShowingMenu] = useState(false)
     const nevbarOptions = [
-        { name : 'About' , path : '/aboutPage'},
-        { name : 'Home' , path : '/'},
-        { name : 'Pricing' , path : ''},
-        { name : 'Program' , path : '/programPage'},
+        { name: 'About', path: '/aboutPage' ,isPage : true },
+        { name: 'Program', path: '#programsection' , isPage : false},
+        { name: 'Training', path: '#trainingSection',isPage : false },
+        { name: 'Pricing', path: '#pricingSection' , isPage : false},
     ]
 
-    return(
-        <div>
-         <header className={styles.headerWrapper}>
+    const nevigate = useNavigate()
 
-            <Link to='/'>
-            <picture className={styles.logoWrapper} >
-                <img 
-                    src = {logo}
-                    className = {styles.logo}
-                >  
-                </img>
-            </picture>
-            </Link>
+    function handleClickJoinUsBtn () {
+        nevigate('/register')
+    }
 
-            <nav className={styles.navBar}>
-                {nevbarOptions.map((option,index) => (
-                    <p key={index} className ={styles.navOptions}> 
-                    <Link to={option.path} className ={styles.link}>
-                        {option.name}
-                    </Link>
-                    </p>
-                ))}
-            </nav>
+    function GetMobileNavOptions () {
+        return(
+            <div className={styles.menuOption}>
 
-            <GoListUnordered 
-                className={styles.menu} 
-                onClick ={() => setIsShowingMenu(!isShowingMenu)}
-            />
-         </header>
-            { 
-            
-            isShowingMenu && <div className={styles.menuOption}>
             <div className={styles.closeBtnWrapper}>
-                <AiFillCloseCircle fontSize='25' onClick ={() => setIsShowingMenu(!isShowingMenu)}
+                <AiFillCloseCircle 
+                    fontSize='25' 
+                    onClick={() => setIsShowingMenu(!isShowingMenu)}
                 />
             </div>
+
             <ul className={styles.list}>
                 {
-                    nevbarOptions.map((option,index) => (
-                    <li key={index} className ={styles.listItem}> 
-                        <Link to={option.path} className ={styles.link}>
+                   nevbarOptions.map((option, index) => (
+                    <li key={index} className={styles.listItem}>
+                       {option.isPage ?  <Link to={option.path} className={styles.link}>
                             {option.name}
-                        </Link>
+                        </Link> :
+                        <a href={option.path}>
+                            {option.name}
+                        </a>}
                     </li>
                 ))}
-
             </ul>
-            
         </div>
+        )
     }
-                </div>
+
+    return (
+        <Fragment>
+            <header className={styles.headerWrapper}>
+
+                <Link to='/'>
+                    <picture className={styles.logoWrapper} >
+                        <img
+                            src={logo}
+                            className={styles.logo}
+                        >
+                        </img>
+                    </picture>
+                </Link>
+
+                <nav className={styles.navBar}>
+                    {nevbarOptions.map((option, index) => (
+                        <p key={index} className={styles.navOptions}>
+                            <Link to={option.path} className={styles.link}>
+                                {option.name}
+                            </Link>
+                        </p>
+                    ))}
+                </nav>
+               {isButtonVisible && <Button 
+                    buttonStyle = {styles.buttonStyle}
+                    buttonText = 'Join Us'
+                    handleClickButton={handleClickJoinUsBtn}
+                />}
+
+                <GoListUnordered
+                    className={styles.menu}
+                    onClick={() => setIsShowingMenu(!isShowingMenu)}
+                />
+
+            </header>
+
+            {/* { isShowingMenu && <GetMobileNavOptions/>  } */}
+
+        </Fragment>
+
     )
 }

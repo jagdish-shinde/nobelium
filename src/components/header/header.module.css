@@ -6,13 +6,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    /* position: fixed; */
-    /* width: 100%; */
-    /* top: 0; */
     position: sticky;
     top: 0;
-    /* z-index: 10; */
     text-align: center;
+    background-color: white;
+    z-index: 100;
 }
 .navBar{
     display: none;
@@ -24,12 +22,15 @@
 }
 .menuOption{
     background-color:  white;
-    position: absolute;
+    position: fixed;
     top:0;
     bottom:0;
     left: 0;
     right: 0;
-    z-index: 5;
+    z-index: 110;
+}
+.menuOption::-webkit-scrollbar{
+    display: none;
 }
 .closeBtnWrapper{
     border-bottom: 1px solid rgb(189, 186, 186);
@@ -41,31 +42,23 @@
     padding: 0;
 }
 .listItem{
-    /* border: 1px solid yellow; */
     text-align: start;
     padding: 1rem;
     padding-left: 3rem;
-}
-.listItem:hover{
-    /* background-color: red; */
 }
 .link{
     text-decoration: none;
     color: black;
 }
-
-
- 
-
-
-
-
+.buttonStyle{
+    display: none;
+}
 
 @media screen and (min-width: 1024px)  {
 
     .logo{
         height : 5rem;
-        width : 6rem
+        width : 5rem
     }
     .headerWrapper{
         display: grid;
@@ -86,14 +79,29 @@
     }
     .link:hover{
         color: blue;
+        font-size: 700;
     }
     .menu{
         display:none
     }
     .menuOption{
         display: none;
-     
     }
-
+    .buttonStyle{
+        display: unset;
+        background-color: #ff0000 !important;
+        width: fit-content;
+        padding: 0 !important;
+        height: fit-content;
+        font-size: 1.2rem;
+        font-weight: 400 !important;
+        align-self: center;
+        justify-self: center;
+        padding: 0.5rem 1rem !important;
+        border-radius: 5px !important;
+    }
+    .link{
+        font-size: 1.2rem;
+    }
 
 }

@@ -7,17 +7,22 @@ import ProgramSec from '../sections/program/program';
 import Trainer from '../sections/trainer/trainer';
 import FeesStructure from '../sections/feesStructure/feesStructure';
 import Footer from '../sections/footer/footer';
+import WhyUs from '../sections/whyUs/whyUs';
 
 function MainPage() {
   return (
     <main>
       <Header/>
-      {/* <HeroSection/>
+      <HeroSection/>
       <About/>
-      <ProgramSec/>
-      <Trainer/>
+      <WhyUs/>
+      <div id="programsection" >
+
+      <ProgramSec />
+      </div>
+      {/* <Trainer/> */}
       <FeesStructure/>
-      <Footer/> */}
+      <Footer/>
     </main>
   );
 }
